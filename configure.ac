@@ -96,7 +96,7 @@ AC_CHECK_PROG(DOXYGEN, [doxygen], [doxygen], [])
 # Find out prefix
 PREFIX=
 if test "x$prefix" = "xNONE" ; then
-	PREFIX=/usr
+	PREFIX="/usr"
 else
 	PREFIX=$prefix
 fi
