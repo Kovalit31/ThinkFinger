@@ -23,7 +23,7 @@
 ################################################################################
 
 # Initialize auto{conf,make}
-AC_PREREQ(2.59)
+AC_PREREQ([2.71])
 AC_INIT([ThinkFinger],[0.3],[http://thinkfinger.sourceforge.net/],[thinkfinger])
 AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE
@@ -32,7 +32,7 @@ AC_CONFIG_SRCDIR([libthinkfinger/libthinkfinger.c])
 # Checks for required programs
 AC_PROG_CC
 AC_PROG_INSTALL
-AC_PROG_LIBTOOL
+LT_INIT
 AM_PROG_CC_C_O
 
 # Checks for header files.
@@ -40,7 +40,7 @@ AC_CHECK_HEADERS([errno.h stdio.h stdlib.h string.h syslog.h unistd.h usb.h])
 
 # AC_ARG_ENABLE USB_DEBUG
 AC_MSG_CHECKING([whether to build with USB hooks for debugging])
-AC_ARG_ENABLE(usb-debug, AC_HELP_STRING([--enable-usb-debug],[build with USB hooks for debugging]),enable_usb_debug=$enableval,enable_usb_debug=no)
+AC_ARG_ENABLE(usb-debug, AS_HELP_STRING([--enable-usb-debug],[build with USB hooks for debugging]),enable_usb_debug=$enableval,enable_usb_debug=no)
 AC_MSG_RESULT([$enable_usb_debug])
 
 if test "x$enable_usb_debug" = "xyes"; then
@@ -49,7 +49,7 @@ fi
 
 # AC_ARG_ENABLE PAM
 AC_MSG_CHECKING([whether to build the pluggable authentication module (PAM)])
-AC_ARG_ENABLE(pam, AC_HELP_STRING([--enable-pam],[build PAM module]),enable_pam=$enableval,enable_pam=yes)
+AC_ARG_ENABLE(pam, AS_HELP_STRING([--enable-pam],[build PAM module]),enable_pam=$enableval,enable_pam=yes)
 AC_MSG_RESULT([$enable_pam])
 
 if test "x$enable_pam" != "xno"; then
@@ -75,14 +75,14 @@ fi
 
 # AC_ARG_ENABLE_BASH
 AC_MSG_CHECKING([whether to install the BASH completion for tf-tool])
-AC_ARG_ENABLE(bash, AC_HELP_STRING([--enable-bash],[install BASH completion for tf-tool in $sysconfdir/bash_completion.d]),enable_bash=$enableval,enable_bash=no)
+AC_ARG_ENABLE(bash, AS_HELP_STRING([--enable-bash],[install BASH completion for tf-tool in $sysconfdir/bash_completion.d]),enable_bash=$enableval,enable_bash=no)
 AC_MSG_RESULT([$enable_bash])
 
 # AC_ARG_ENABLE SECUREDIR
-AC_ARG_ENABLE(securedir, AC_HELP_STRING([--with-securedir=dir],[Where to put PAM module @<:@default=$libdir/security@:>@]))
+AC_ARG_ENABLE(securedir, AS_HELP_STRING([--with-securedir=dir],[Where to put PAM module @<:@default=$libdir/security@:>@]))
 
 # AC_ARG_ENABLE_BIR_DIR
-AC_ARG_ENABLE(birdir, AC_HELP_STRING([--with-birdir=dir],[Where to put the biometric identification records (bir files) @<:@default=$sysconfdir/pam_thinkfinger@:>@]))
+AC_ARG_ENABLE(birdir, AS_HELP_STRING([--with-birdir=dir],[Where to put the biometric identification records (bir files) @<:@default=$sysconfdir/pam_thinkfinger@:>@]))
 
 # Check for pthread
 AC_CHECK_LIB(pthread, pthread_create, [PTHREAD_LIBS="-lpthread"], AC_MSG_ERROR([libpthread missing]))
