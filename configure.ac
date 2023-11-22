@@ -96,7 +96,7 @@ AC_CHECK_PROG(DOXYGEN, [doxygen], [doxygen], [])
 # Find out prefix
 PREFIX=
 if test "x$prefix" = "xNONE" ; then
-	PREFIX=$ac_default_prefix
+	PREFIX=/usr
 else
 	PREFIX=$prefix
 fi
@@ -131,7 +131,7 @@ AC_SUBST(SBINDIR)
 if ! test -z "$with_securedir" ; then
 	SECUREDIR_TMP="$with_securedir"
 else
-	SECUREDIR_TMP=$LIBDIR/security
+	SECUREDIR_TMP=$LIBDIR/$host_cpu-$host_os/security
 fi
 SECUREDIR=`eval echo $SECUREDIR_TMP`
 AC_SUBST(SECUREDIR)
@@ -139,7 +139,7 @@ AC_SUBST(SECUREDIR)
 if ! test -z "$with_birdir" ; then
 	BIRDIR_TMP="$with_birdir"
 else
-	BIRDIR_TMP=$sysconfdir/pam_thinkfinger
+	BIRDIR_TMP=/etc/pam_thinkfinger
 fi
 BIRDIR=`eval echo $BIRDIR_TMP`
 AC_SUBST(BIRDIR)
