@@ -1,6 +1,6 @@
 Name: Fingerprint auth for UPEK/SGS Microelectronics fingerprint reader
 Default: no
-Priority: 250
+Priority: 270
 Auth-Type: Primary
 Auth:
 	[success=end default=ignore]	pam_thinkfinger.so # debug
