@@ -234,7 +234,7 @@ static const char *handle_error (libthinkfinger_init_status init_status)
 }
 
 PAM_EXTERN
-int pam_sm_authenticate (pam_handle_t *pamh, int flags, int argc, const char **argv)
+int	pam_sm_authenticate (pam_handle_t *pamh, int flags, int argc, const char **argv)
 {
 	int ret;
 	int retval = PAM_AUTH_ERR;
@@ -328,6 +328,10 @@ PAM_EXTERN
 int pam_sm_chauthtok (pam_handle_t *pamh, int flags, int argc, const char **argv)
 {
 	return PAM_SUCCESS;
+}
+
+int main(int argc, const char **argv) {
+	return 0;
 }
 
 #ifdef PAM_STATIC
