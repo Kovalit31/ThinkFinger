@@ -165,6 +165,9 @@ static void thinkfinger_thread (void *data)
 		pam_thinkfinger->swipe_retval = PAM_SUCCESS;
 		pam_thinkfinger_log (pam_thinkfinger, LOG_NOTICE,
 				    "User '%s' authenticated (biometric identification record matched).", pam_thinkfinger->user);
+		char *deleted;
+		pam_prompt (pam_thinkfinger->pamh, PAM_TEXT_INFO, &deleted, "You are suceefully logined! Press ENTER!");
+		free(deleted);
 	} else if (tf_state == TF_RESULT_VERIFY_FAILED) {
 		pam_thinkfinger->swipe_retval = PAM_AUTH_ERR;
 		pam_thinkfinger_log (pam_thinkfinger, LOG_NOTICE,
