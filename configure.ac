@@ -131,7 +131,7 @@ AC_SUBST(SBINDIR)
 if ! test -z "$with_securedir" ; then
 	SECUREDIR_TMP="$with_securedir"
 else
-	SECUREDIR_TMP=$LIBDIR/security
+	SECUREDIR_TMP=$LIBDIR/$build_cpu-$build_os/security
 fi
 SECUREDIR=`eval echo $SECUREDIR_TMP`
 AC_SUBST(SECUREDIR)
