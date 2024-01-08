@@ -94,6 +94,7 @@ int uinput_open (int *fd)
 
 	/* our single key keyboard */
 	i  = ioctl (*fd, UI_SET_EVBIT, EV_KEY) < 0;
+	i |= ioctl (*fd, UI_SET_KEYBIT, KEY_A) < 0;
 	i |= ioctl (*fd, UI_SET_KEYBIT, KEY_ENTER) < 0;
 
 	if (write (*fd, &device, device_size) != device_size) {
